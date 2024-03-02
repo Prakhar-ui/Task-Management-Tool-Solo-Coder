@@ -3,6 +3,10 @@ require("dotenv").config();
 const express = require("express");
 const mongoose = require("mongoose");
 const sessions = require("express-session");
+const multer = require("multer");
+const cors = require('cors');
+const Task = require('./models/TaskSchema');
+
 
 const app = express();
 const PORT = process.env.PORT || 4000;
@@ -13,9 +17,11 @@ const db = mongoose.connection;
 db.on('error',(error) => console.log(error));
 db.once('open',() => console.log('Connected to database!'));
 
+
 // middlewares
 app.use(express.urlencoded({extended: false}));
 app.use(express.json());
+app.use(cors());
 
 app.use(sessions({
     secret: 'my secret key',
@@ -28,9 +34,6 @@ app.use((req, res, next) => {
     delete req.session.message;
     next();
 });
-
-// set template engine
-app.set('view engine', 'ejs');
 
 //route prefix
 app.use("",require('./routes/routes'));
