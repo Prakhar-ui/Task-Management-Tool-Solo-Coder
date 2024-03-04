@@ -8,6 +8,7 @@ const StyledNavbar = styled(Navbar)`
   padding-top: 10px;
   padding-bottom: 10px;
   position: fixed;
+  max-width: 100vw;
   width: 100%;
 `;
 
@@ -30,6 +31,7 @@ const EqualSpaceNav = styled(Nav)`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  max-width: 100vw;
   width: 100%;
 `;
 

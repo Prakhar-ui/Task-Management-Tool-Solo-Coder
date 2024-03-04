@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faAngleDoubleLeft,
-  faAngleDoubleRight,
-  faAngleLeft,
-  faAngleRight,
+  faBackwardFast,
+  faForwardFast,
+  faBackwardStep,
+  faForwardStep,
 } from "@fortawesome/free-solid-svg-icons";
 import styled from "styled-components";
 import WeeklyTaskInfo from "./WeeklyTaskInfo";
@@ -13,12 +13,13 @@ import Navbar from "./Navbar";
 const ButtonContainer = styled.div`
   display: flex;
   justify-content: space-between;
-  width: 80%;
   align-items: center;
-  margin: 0 auto;
   position: fixed;
-  width: 100%;
-  margin-top:70px;
+  max-width: calc(100vw - 40px); /* Adjusted max-width */
+  width: calc(100% - 40px); /* Adjusted width */
+  margin-top: 70px;
+  margin-left: 20px; /* New margin on the left */
+  margin-right: 20px; /* New margin on the right */
 `;
 
 const DateRange = styled.div`
@@ -35,7 +36,9 @@ const CalendarWrapper = styled.div`
   grid-template-columns: auto 1fr;
   margin: 0 2rem 2rem 2rem;
   font-family: system-ui, sans-serif;
-  width: 100%;
+  max-width: calc(100vw - 20px); /* Adjusted max-width */
+  width: calc(100% - 20px); /* Adjusted width */
+  margin: 0 auto; /* Centers the wrapper horizontally */
   padding-top: 120px;
 `;
 
@@ -46,7 +49,6 @@ const Timeline = styled.div`
 
 const Days = styled.div`
   display: grid;
-  grid-column: 2;
   gap: 5px;
   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
 `;
@@ -139,14 +141,14 @@ function WeeklyCalendar() {
     <div>
       <Navbar />
       <ButtonContainer>
-        <IconButton icon={faAngleDoubleLeft} onClick={goToPreviousMonth} />
-        <IconButton icon={faAngleLeft} onClick={goToPreviousWeek} />
+        <IconButton icon={faBackwardFast} onClick={goToPreviousMonth} />
+        <IconButton icon={faBackwardStep} onClick={goToPreviousWeek} />
         <DateRange>
           {formatDayAndDate(getDaysOfWeek()[0])} -{" "}
           {formatDayAndDate(getDaysOfWeek()[6])}
         </DateRange>
-        <IconButton icon={faAngleRight} onClick={goToNextWeek} />
-        <IconButton icon={faAngleDoubleRight} onClick={goToNextMonth} />
+        <IconButton icon={faForwardStep} onClick={goToNextWeek} />
+        <IconButton icon={faForwardFast} onClick={goToNextMonth} />
       </ButtonContainer>
       <CalendarWrapper>
         <Timeline>

@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faAngleDoubleLeft,
-  faAngleDoubleRight,
-  faAngleLeft,
-  faAngleRight,
+  faBackwardFast,
+  faForwardFast,
+  faBackwardStep,
+  faForwardStep,
 } from "@fortawesome/free-solid-svg-icons";
 import styled from "styled-components";
 import MonthlyTaskInfo from "./MonthlyTaskInfo";
@@ -13,16 +13,17 @@ import Navbar from "./Navbar";
 const ButtonContainer = styled.div`
   display: flex;
   justify-content: space-between;
-  width: 80%;
   align-items: center;
-  margin: 0 auto;
   position: fixed;
-  width: 100%;
-  margin-top:70px;
+  max-width: calc(100vw - 40px); /* Adjusted max-width */
+  width: calc(100% - 40px); /* Adjusted width */
+  margin-top: 70px;
+  margin-left: 20px; /* New margin on the left */
+  margin-right: 20px; /* New margin on the right */
 `;
 
 const DateRange = styled.div`
-  font-size: 2em;
+  font-size: 3em;
 `;
 
 const IconButton = styled(FontAwesomeIcon)`
@@ -30,36 +31,41 @@ const IconButton = styled(FontAwesomeIcon)`
 `;
 
 const CalendarWrapper = styled.div`
-  display: grid;
-  gap: 10px;
-  grid-template-columns: auto 1fr;
-  margin: 0 2rem 2rem 2rem;
   font-family: system-ui, sans-serif;
   padding-top: 120px;
+  max-width: calc(100vw - 20px); /* Adjusted max-width */
+  width: calc(100% - 20px); /* Adjusted width */
+  margin: 0 auto; /* Centers the wrapper horizontally */
+  margin-bottom: 60px;
 `;
 
 const StyledTable = styled.table`
+  margin-top: 50px;
+  order-collapse: collapse;
+  max-width: 100vw;
   width: 100%;
-  border-collapse: collapse;
 `;
 
-const StyledHead = styled.thead``;
+const StyledHead = styled.thead`
+  max-width: 100vw;
+`;
 
 const StyledRow = styled.tr``;
 
 const StyledHeaderCell = styled.th`
-  padding: 10px;
   text-align: center;
-  font-size: 3rem;
-  font-weight: 600;
+  font-size: 2rem;
+  font-weight: 400;
+  max-width: calc(100vw / 7);
 `;
 
 const StyledBody = styled.tbody``;
 
 const StyledCell = styled.td`
-  padding: 5px;
+  padding: 2px;
   height: 200px;
-  width: 100%;
+  max-width: calc(100vw / 7);
+  max-height: calc(100vh / 6);
 `;
 
 function MonthlyCalendar() {
@@ -165,11 +171,11 @@ function MonthlyCalendar() {
     <div>
       <Navbar />
       <ButtonContainer>
-        <IconButton icon={faAngleDoubleLeft} onClick={goToPreviousYear} />
-        <IconButton icon={faAngleLeft} onClick={goToPreviousMonth} />
+        <IconButton icon={faBackwardFast} onClick={goToPreviousYear} />
+        <IconButton icon={faBackwardStep} onClick={goToPreviousMonth} />
         <DateRange>{formatDayMonthYear(currentDate)}</DateRange>
-        <IconButton icon={faAngleRight} onClick={goToNextMonth} />
-        <IconButton icon={faAngleDoubleRight} onClick={goToNextYear} />
+        <IconButton icon={faForwardStep} onClick={goToNextMonth} />
+        <IconButton icon={faForwardFast} onClick={goToNextYear} />
       </ButtonContainer>
       <CalendarWrapper>
         <StyledTable>

@@ -6,8 +6,8 @@ const Events = styled.div`
   display: flex;
   flex-direction: column;
   border-radius: 5px;
+  border: 1px solid #f2d3d8;
   background: #fff1f8;
-  margin-bottom: 0.5rem;
   height: 100%;
 `;
 
@@ -15,7 +15,6 @@ const Event = styled.div`
   border: 1px solid #f2d3d8;
   border-radius: 5px;
   padding: 0;
-  padding-left: 0.5rem;
   margin: 0.5rem 0.5rem 0 0.5rem; /* Added top margin */
   background: ${(props) => {
     const colors = ["#ffd6d1", "#fafaa3", "#e2f8ff", "#d1ffe6"];
@@ -165,7 +164,7 @@ function MonthlyTaskInfo({ day }) {
             <Title>Ending: {getMaxTime()}</Title>
             <Title>Total Free Time: {getTotalFreeTime()}</Title>
           </>
-        )}
+        )}{" "}
       </Event>
     </Events>
   );
