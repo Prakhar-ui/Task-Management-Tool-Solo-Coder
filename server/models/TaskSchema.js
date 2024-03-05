@@ -6,12 +6,10 @@ const TaskSchema = new mongoose.Schema({
     startTime: {
         hour: { type: Number, required: true },
         minute: { type: Number, required: true },
-        second: { type: Number, required: true }
     },
     endTime: {
         hour: { type: Number, required: true },
         minute: { type: Number, required: true },
-        second: { type: Number, required: true }
     },
     totalSeconds: { type: Number, required: true }, // Total duration of the task in seconds
     recurring: {

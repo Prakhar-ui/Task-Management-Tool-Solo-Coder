@@ -51,6 +51,9 @@ const CustomNavbar = () => {
             <Nav.Link as={Link} to="/weekly-calendar" style={NavLinkStyle}>
               Weekly Calendar
             </Nav.Link>
+            <Nav.Link as={Link} to="/create-event" style={NavLinkStyle}>
+              Create Event
+            </Nav.Link>
           </EqualSpaceNav>
         </Navbar.Collapse>
       </StyledContainer>
